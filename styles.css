@@ -1,0 +1,18 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#buttons button {
+    margin: 5px;
+}
+
+#timerDisplay {
+    font-size: 48px;
+    margin-top: 20px;
+}
+
+#percentDisplay {
+    font-size: 24px;
+    margin-top: 10px;
+}
