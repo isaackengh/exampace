@@ -4,11 +4,12 @@ let stopwatchSeconds = 0;
 let isTimerRunning = false;
 let isTimerPaused = false;
 let timerInterval;
+let stopwatchInterval;
 let percentDisplay = document.getElementById('percentDisplay');
 
 function startTimer() {
     let timeInput = parseFloat(document.getElementById('timeInput').value);
-    if (!isNaN(timeInput)) {
+    if (!isNaN(timeInput) && timeInput>0 ) {
         totalTimerSeconds = Math.floor(timeInput * 1.2 * 60);
         timerSeconds = totalTimerSeconds;
         isTimerRunning = true;
@@ -16,6 +17,8 @@ function startTimer() {
         document.getElementById('pauseButton').disabled = false;
         document.getElementById('resetButton').disabled = false;
         document.getElementById('timeInput').disabled = true;
+        clearInterval(timerInterval);
+        clearInterval(stopwatchInterval);
         timerInterval = setInterval(updateTimer, 1000);
     } else {
         alert("Please enter a valid number.");
@@ -38,6 +41,7 @@ function startStopwatch() {
     isTimerRunning = false;
     document.getElementById('timerDisplay').style.color = 'red';
     percentDisplay.innerText = "Time is up!";
+    clearInterval(timerInterval);
     stopwatchInterval = setInterval(updateStopwatch, 1000);
 }
 
@@ -59,19 +63,20 @@ function pauseTimer() {
             percentDisplay.innerText = `${percentRemaining.toFixed(0)}%`;
             updatePercentColor(percentRemaining);
         } else {
-            let totalSeconds = stopwatchSeconds + totalTimerSeconds;
+            let totalSeconds = totalTimerSeconds - timerSeconds + stopwatchSeconds;
             let minutes = Math.floor(totalSeconds / 60);
             let seconds = totalSeconds % 60;
             percentDisplay.innerText = `Total Time: ${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         }
         clearInterval(timerInterval);
+        clearInterval(stopwatchInterval);
     } else {
         document.getElementById('pauseButton').innerText = "Pause";
         percentDisplay.innerText = "";
         if (timerSeconds >= 0) {
             timerInterval = setInterval(updateTimer, 1000);
         } else {
-            startStopwatch();
+            stopwatchInterval = setInterval(updateStopwatch, 1000);
         }
     }
 }
@@ -90,6 +95,7 @@ function resetTimer() {
     document.getElementById('resetButton').disabled = true;
     document.getElementById('timeInput').disabled = false;
     clearInterval(timerInterval);
+    clearInterval(stopwatchInterval);
 }
 
 function updatePercentColor(percent) {
