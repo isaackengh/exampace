@@ -105,21 +105,22 @@ function pauseTimer() {
 }
 
 function resetTimer() {
-	isTimerRunning = false;
-	isTimerPaused = false;
-	timerSeconds = 0;
-	totalTimerSeconds = 0;
-	stopwatchSeconds = 0;
-	document.getElementById("timerDisplay").innerText = "00:00";
-	document.getElementById("timerDisplay").style.color = "black";
-	percentDisplay.innerText = "";
-	document.getElementById("pauseButton").innerText = "Pause";
-	document.getElementById("pauseButton").disabled = true;
-	document.getElementById("resetButton").disabled = true;
-	document.getElementById("timeInput").disabled = false;
-	document.getElementById("timeInput").value = ""; // Clear the input
-	clearInterval(timerInterval);
-	clearInterval(stopwatchInterval);
+    isTimerRunning = false;
+    isTimerPaused = false;
+    timerSeconds = 0;
+    totalTimerSeconds = 0;
+    stopwatchSeconds = 0;
+    document.getElementById("timerDisplay").innerText = "00:00";
+    document.getElementById("timerDisplay").style.color = "black";
+    percentDisplay.innerText = "";
+    document.getElementById("pauseButton").innerText = "Pause";
+    document.getElementById("pauseButton").disabled = true;
+    document.getElementById("resetButton").disabled = true;
+    document.getElementById("timeInput").disabled = false;
+    document.getElementById("timeInput").value = ""; // Clear the input
+    document.getElementById("startButton").disabled = true; // Disable the "Start Timer" button
+    clearInterval(timerInterval);
+    clearInterval(stopwatchInterval);
 }
 
 function updatePercentColor(percent) {
