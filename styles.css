@@ -1,18 +1,49 @@
-.container {
-    text-align: center;
-    margin-top: 50px;
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
 }
 
-#buttons button {
-    margin: 5px;
+.container {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+}
+
+#buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+button {
+	padding: 10px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button[disabled] {
+	background-color: #ccc;
+	cursor: not-allowed;
 }
 
 #timerDisplay {
-    font-size: 48px;
-    margin-top: 20px;
+	font-size: 2em;
+	text-align: center;
+	margin-top: 20px;
 }
 
 #percentDisplay {
-    font-size: 24px;
-    margin-top: 10px;
+	text-align: center;
+	margin-top: 10px;
 }
